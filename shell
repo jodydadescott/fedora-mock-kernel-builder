@@ -1,0 +1,10 @@
+#!/bin/sh
+
+main() {
+  cd $(dirname $0)
+  mock -r mock.cfg --shell
+}
+
+err() { echo "$@" 1>&2; }
+
+main $@

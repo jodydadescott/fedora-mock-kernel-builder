@@ -1,0 +1,11 @@
+#!/bin/sh
+
+main() {
+  cd $(dirname $0)
+  mock -r mock.cfg --init
+  mock -r mock.cfg --install dnf vim kernel kernel-modules
+}
+
+err() { echo "$@" 1>&2; }
+
+main $@

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+main() {
+  cd $(dirname $0)
+  internal_file=$1
+  external_file=$2
+  [[ $internal_file ]] || { err "Usage: $0 internal_file {external_file}"; return 2; }
+  [[ $external_file ]] || { external_file=$internal_file; }
+  mock -r mock.cfg --copyout $internal_file $external_file
+}
+
+err() { echo "$@" 1>&2; }
+
+main $@
